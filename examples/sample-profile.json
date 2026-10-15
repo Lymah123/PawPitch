@@ -1,0 +1,17 @@
+{
+  "creator": "Alex (a fictional sample creator)",
+  "pet": {
+    "name": "Biscuit",
+    "breed": "beagle",
+    "personality": ["curious", "food-motivated", "dramatic when the treat jar is empty"]
+  },
+  "tagline": "Nose first, always.",
+  "content": ["product demo videos", "slice-of-life videos", "unboxing photos"],
+  "platforms": ["Instagram", "TikTok"],
+  "equipment": ["smartphone", "natural light"],
+  "past_work": [],
+  "audience": "",
+  "turnaround": "",
+  "usage_rights_offered": "",
+  "rates": ""
+}
