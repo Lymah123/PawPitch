@@ -1,0 +1,16 @@
+Asking Gemma (attempt 1/5, seed 42; slow on CPU)...
+
+=== DRAFT (email) ===
+Subject: Biscuit x cozy kennel co: a UGC idea
+
+Hi, I'm Alex and this is Biscuit, our curious beagle! I really appreciate Cozy Kennel Co’s focus on honest first reactions. I would love to create a slice-of-life video showing Biscuit exploring our new Cozy Kennel Co bed. I would also love to create unboxing photos of Biscuit enjoying the bed. Nose first, always. Let’s chat!
+
+--- passed the fact check (it does not prove every word is true)
+profile facts in the message: content: slice-of-life videos | content: unboxing photos | creator: Alex | pet breed: beagle | pet name: Biscuit | pet personality: curious
+brand sentences the model cited: Cozy Kennel Co sells washable dog beds in three sizes. | We would like short unboxing and set-up videos from small-dog households, plus a few photos of the dog settling in. | Honest first reactions matter more to us than polish.
+
+Double-check before sending:
+  - words that are not in your profile or the brand text, so check each one is true: appreciate, exploring, enjoying
+
+Read it, change anything that does not sound like you, and send it yourself.
+Then log it: cargo run -- log --brand "<name>" --channel email

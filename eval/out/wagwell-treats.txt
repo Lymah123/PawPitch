@@ -1,0 +1,16 @@
+Asking Gemma (attempt 1/5, seed 42; slow on CPU)...
+
+=== DRAFT (email) ===
+Subject: Biscuit x wagwell treats: a UGC idea
+
+Hi, I'm Alex and this is Biscuit, our curious beagle! I really appreciate how Wagwell Treats uses real ingredients – it’s fantastic to see dogs enjoying them. I would love to create a slice-of-life video showing Biscuit exploring a new Wagwell Treat. I would also love to create unboxing photos of the treats. Nose first, always. Let’s chat about how we can create some fun content together!
+
+--- passed the fact check (it does not prove every word is true)
+profile facts in the message: content: slice-of-life videos | content: unboxing photos | pet breed: beagle | pet name: Biscuit | pet personality: curious
+brand sentences the model cited: Wagwell Treats makes small-batch dog treats from real ingredients. | We love seeing dogs enjoy our crunchy peanut butter bites in real homes. | We are looking for pet parents who can share honest, natural-looking videos of their dog trying our treats.
+
+Double-check before sending:
+  - words that are not in your profile or the brand text, so check each one is true: appreciate, fantastic, enjoying, exploring
+
+Read it, change anything that does not sound like you, and send it yourself.
+Then log it: cargo run -- log --brand "<name>" --channel email

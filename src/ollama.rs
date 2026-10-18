@@ -12,9 +12,16 @@ pub fn build_prompt(profile_text: &str, brand_text: &str, channel: &str, max_wor
         "a short direct message (leave the subject empty)"
     };
     format!(
-        "You write outreach messages for a new UGC (user-generated content) pet creator. Write {style}, at most {max_words} words in the body, in a warm, natural first-person voice. \
-Use ONLY the facts in CREATOR FACTS and BRAND TEXT. Never invent follower counts, views, results, past brand partnerships, prices, turnaround times or numbers. If a detail is not in the facts, leave it out. \
-Reply with JSON only, in this form: {{\"subject\": string, \"body\": string, \"profile_facts_used\": [exact phrases copied from CREATOR FACTS], \"brand_facts_used\": [exact phrases copied from BRAND TEXT]}}\n\nCREATOR FACTS:\n{profile}\n\nBRAND TEXT:\n{brand}",
+        "You write outreach messages for a new UGC (user-generated content) pet creator. Write {style}, at most {max_words} words in the body, in a warm, natural first-person voice. Use exactly four short sentences: (1) say hello and introduce yourself and your pet by name; (2) mention one thing from BRAND TEXT that you like about the brand; (3) propose one content idea in a format exactly as listed, starting with I would love to create; (4) end with the tagline if one is listed and a friendly call to action. Leave the subject field empty.\n\n\
+STRICT FACT RULES:\n\
+- Use only facts explicitly stated in CREATOR FACTS or BRAND TEXT.\n\
+- Refer to the pet by name. Never use he, she, his or her unless the facts state the pet's gender.\n\
+- Never say the pet or the creator has tried, loved, reviewed or endorsed the brand's products. Offer ideas for the future instead (for example: I would love to create...).\n\
+- Name content formats exactly as listed. Do not turn photos into videos.\n\
+- Do not invent personality traits, feelings, hobbies or family roles (such as mom or owner). Describe the pet only with the traits listed.\n\
+- Do not mention equipment, follower counts, views, engagement, past collaborations, results, prices, turnaround times or any numbers unless they are listed.\n\
+- If a useful fact is missing, leave it out instead of guessing.\n\n\
+Reply with JSON only, in this form: {{\"subject\": string, \"body\": string, \"profile_facts_used\": [exact phrases copied from CREATOR FACTS that your message really uses], \"brand_facts_used\": [exact phrases copied from BRAND TEXT that your message really uses]}}\n\nCREATOR FACTS:\n{profile}\n\nBRAND TEXT:\n{brand}",
         style = style,
         max_words = max_words,
         profile = profile_text,
@@ -22,14 +29,14 @@ Reply with JSON only, in this form: {{\"subject\": string, \"body\": string, \"p
     )
 }
 
-fn generate(prompt: &str) -> Result<String, String> {
+fn generate(prompt: &str, seed: i64) -> Result<String, String> {
     let body = serde_json::json!({
         "model": MODEL,
         "prompt": prompt,
         "stream": false,
         "format": "json",
         "keep_alive": "30m",
-        "options": { "temperature": 0.3, "seed": 42 }
+        "options": { "temperature": 0.3, "seed": seed }
     });
     let client = reqwest::blocking::Client::builder()
         .timeout(Duration::from_secs(600))
@@ -60,8 +67,8 @@ pub fn parse_draft(text: &str) -> Result<Draft, String> {
     serde_json::from_str::<Draft>(cleaned).map_err(|e| format!("not a usable draft ({e}). Raw reply: {text}"))
 }
 
-pub fn draft(prompt: &str) -> Result<Draft, String> {
-    let text = generate(prompt)?;
+pub fn draft(prompt: &str, seed: i64) -> Result<Draft, String> {
+    let text = generate(prompt, seed)?;
     parse_draft(&text)
 }
 
@@ -86,6 +93,6 @@ mod tests {
     fn prompt_contains_both_sources_and_the_rule() {
         let p = build_prompt("pet name: Biscuit", "Wagwell makes treats", "email", 140);
         assert!(p.contains("pet name: Biscuit") && p.contains("Wagwell makes treats"));
-        assert!(p.contains("Never invent"));
+        assert!(p.contains("STRICT FACT RULES"));
     }
 }

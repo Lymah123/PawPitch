@@ -1,0 +1,16 @@
+Asking Gemma (attempt 1/5, seed 42; slow on CPU)...
+
+=== DRAFT (email) ===
+Subject: Biscuit x little paws grooming: a UGC idea
+
+Hi, I'm Alex and this is Biscuit, our curious beagle! I really appreciate how Little Paws Grooming focuses on honest routine content in real bathrooms and living rooms. I would love to create a short slice-of-life video showing Biscuit enjoying a new brush set. I would also love to create a series of unboxing photos of your shampoo and brush sets. Nose first, always. Let's chat about how we can work together!
+
+--- passed the fact check (it does not prove every word is true)
+profile facts in the message: content: slice-of-life videos | content: unboxing photos | creator: Alex | pet breed: beagle | pet name: Biscuit | pet personality: curious
+brand sentences the model cited: Little Paws Grooming makes gentle shampoo and brush sets for small dogs. | We love honest routine content shown in real bathrooms and living rooms. | Creators who can demonstrate a product step by step are especially welcome.
+
+Double-check before sending:
+  - words that are not in your profile or the brand text, so check each one is true: appreciate, focuses, enjoying, series
+
+Read it, change anything that does not sound like you, and send it yourself.
+Then log it: cargo run -- log --brand "<name>" --channel email

@@ -1,0 +1,16 @@
+Asking Gemma (attempt 1/5, seed 42; slow on CPU)...
+
+=== DRAFT (email) ===
+Subject: Biscuit x pawsome toys: a UGC idea
+
+Hi there! My name is Alex and I have a super curious beagle named Biscuit. I really appreciate how Pawsome Toys designs durable chew toys for small and medium dogs. I would love to create a short slice-of-life video showing Biscuit enjoying a Pawsome Toy in a playful setting. I would also love to create unboxing photos of a new toy! Nose first, always. Let's chat about how Biscuit can bring some fun to your feed!
+
+--- passed the fact check (it does not prove every word is true)
+profile facts in the message: content: slice-of-life videos | content: unboxing photos | creator: Alex | pet breed: beagle | pet name: Biscuit | pet personality: curious
+brand sentences the model cited: Pawsome Toys designs durable chew toys for small and medium dogs | Our brand voice is playful and honest | We want creators who show how a toy holds up in everyday play, in short videos or clear photos
+
+Double-check before sending:
+  - words that are not in your profile or the brand text, so check each one is true: appreciate, enjoying, setting
+
+Read it, change anything that does not sound like you, and send it yourself.
+Then log it: cargo run -- log --brand "<name>" --channel email
